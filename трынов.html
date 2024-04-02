@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+    <script>
+        mocha.setup('bdd'); 
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+    <script>
+        var assert = chai.assert; 
+    </script>
+</head>
+
+<body>
+    <script src="трынов.js"></script>
+
+    <div id="mocha"></div>
+    <script>
+        mocha.run() 
+    </script>
+
+    <script>
+        function task2(x, n) {
+            let result = 1;
+
+            for (let i = 0; i < n; i++) {
+                result *= x;
+            }
+
+            return result;
+        }
+
+        describe("task2", function () {
+            function makeTest(x) {
+                let exp = x * x * x * x * x;
+                it(`${x} в степени 5 будет ${exp}`, function () {
+                    assert.equal(task2(x, 5), exp);
+                });
+            }
+
+            for (let x = 3; x <= 5; x++) {
+                makeTest(x);
+            }
+        });
+    </script>
+</body>
+
+</html>
